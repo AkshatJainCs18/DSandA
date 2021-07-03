@@ -1,0 +1,42 @@
+//  https://leetcode.com/problems/intersection-of-two-arrays/submissions/
+
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        int l1=nums1.size(),l2=nums2.size();
+        unordered_map<int,int>m;
+        vector<int>v;
+        int l3=l1<=l2?l1:l3;
+        if(l3==l1)
+        {
+            for(int i=0;i<l1;++i){
+                auto it=find(nums2.begin(),nums2.end(),nums1[i]);
+                if(it!=nums2.end())
+                {
+                    if(m[nums1[i]]==0)
+                    {
+                        v.push_back(nums1[i]);
+                        m[nums1[i]]=1;
+                    }
+                }
+            }
+            return v;
+        }
+        else{
+            for(int i=0;i<l2;++i){
+                auto it=find(nums1.begin(),nums1.end(),nums2[i]);
+                if(it!=nums1.end())
+                {
+                    if(m[nums2[i]]==0)
+                    {
+                        v.push_back(nums2[i]);
+                        m[nums2[i]]=1;
+                    }
+                }
+            }
+            return v;
+        }
+        
+    }
+};
