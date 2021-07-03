@@ -1,0 +1,35 @@
+//  https://leetcode.com/problems/sum-of-all-subset-xor-totals/submissions/
+
+
+class Solution {
+public:
+    void call(int *s,vector<int>&v,vector<int>&n,int l,int r)
+    {
+        int y=v.size();
+        if(y!=0)
+        {
+            if(y==1) (*s)+=v[0];
+            else
+            {
+                int x=v[0];
+                for(int j=1;j<y;++j)
+                    x^=v[j];
+                (*s)+=x;
+            }
+        }
+        for(int i=l;i<r;++i)
+        {
+            v.push_back(n[i]);
+            call(s,v,n,i+1,r);
+            v.pop_back();
+        }
+        }
+    
+    int subsetXORSum(vector<int>& n) {
+        int sum=0;
+        vector<int>v;
+        call(&sum,v,n,0,n.size());
+        return sum;
+        
+    }
+};
