@@ -1,0 +1,16 @@
+//https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/submissions/
+
+class Solution {
+public:
+    static bool fn(int  x,int  y){
+        int  a=__builtin_popcountll(x);
+        int  b=__builtin_popcountll(y);
+        if (a==b)return x<y;
+        return a<b;
+    }
+    vector<int> sortByBits(vector<int>& arr) {
+        sort(arr.begin(),arr.end(),fn);
+        return arr;
+        
+    }
+};
