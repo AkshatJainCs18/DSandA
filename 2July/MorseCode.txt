@@ -1,0 +1,19 @@
+//  https://leetcode.com/problems/height-checker/submissions/
+
+
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+            string morse[]={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+	    set<string>s;
+	    for(int i=0;i<words.size();++i) {
+		 string temp="";
+		 for(int j=0;j<words[i].length();++j){
+			char ch=words[i].at(j);
+			int x=ch-'a' ;
+			temp+=morse[x];
+			s.insert(temp);
+		}
+		return s.size();
+		}
+};
