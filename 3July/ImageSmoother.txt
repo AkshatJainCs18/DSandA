@@ -1,0 +1,38 @@
+//  https://leetcode.com/problems/image-smoother/
+
+
+class Solution {
+    public int[][] imageSmoother(int[][] img) {
+        int m=img.length,n=img[0].length;
+        int arr[][]=new int[m][n];
+        for(int i=0;i<m;++i)
+        {   
+            for(int j=0;j<n;++j)
+            {   
+                int pos=9;
+                float sum=0;
+               if(i-1>=0&&j-1>=0)sum+=img[i-1][j-1]; else --pos;
+                if(i-1>=0&&j>=0)sum+=img[i-1][j]; else --pos;
+                if(i-1>=0&&j+1<n)sum+=img[i-1][j+1]; else --pos;
+                
+                
+                if(j-1>=0)sum+=img[i][j-1]; else --pos;
+                if(j+1<n)sum+=img[i][j+1]; else --pos;
+                
+                
+                if(i+1<m&&j-1>=0)sum+=img[i+1][j-1]; else --pos;
+                if(i+1<m)sum+=img[i+1][j]; else --pos;
+                if(i+1<m&&j+1<n)sum+=img[i+1][j+1]; else --pos;
+                
+                
+                sum+=img[i][j];
+                
+                sum/=(float)pos;
+                arr[i][j]=(int)Math.floor(sum);
+                
+                
+          
+            }
+        }return arr;
+    }
+}
